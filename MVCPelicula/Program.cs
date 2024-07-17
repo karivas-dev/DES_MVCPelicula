@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using MVCPelicula.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<PeliculasDBContext>
+(item => item.UseSqlServer(builder.Configuration.GetConnectionString("Peliculas")));
 
 var app = builder.Build();
 
